@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!--
+      Tüm ikonlar ve sosyal görsel gerçek uygulama ikonundan üretiliyor:
+      npm run assets  (bkz. scripts/optimize-assets.mjs)
+
+      apple-touch-icon 180px, 48px kaynaktan büyütülmüştür ve YUMUŞAK görünür.
+      512px+ bir logo master'ı geldiğinde script onu otomatik kullanır.
+    -->
+    <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <meta name="theme-color" content="#ffffff" />
+
+    <title>Illugon — Çocuklar için şekil, renk ve sayı oyunları</title>
+    <meta
+      name="description"
+      content="Illugon, 2-5 yaş çocuklar için şekil, renk, sayı ve mantık oyunları sunar. %100 reklamsız, internet gerekmez. Google Play’de Öğretmen Onaylı."
+    />
+
+    <link rel="canonical" href="https://illugon.com/" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Illugon" />
+    <meta property="og:locale" content="tr_TR" />
+    <meta property="og:url" content="https://illugon.com/" />
+    <meta
+      property="og:title"
+      content="Illugon — Çocuklar için şekil, renk ve sayı oyunları"
+    />
+    <meta
+      property="og:description"
+      content="2-5 yaş çocuklar için şekil, renk, sayı ve mantık oyunları. %100 reklamsız, internet gerekmez. Google Play’de Öğretmen Onaylı."
+    />
+    <meta property="og:image" content="https://illugon.com/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta
+      property="og:image:alt"
+      content="Illugon logosu ve şekil-renk eşleştirme oyununun ekran görüntüsü."
+    />
+
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <!--
+      Aquawax Pro ticari bir yazı tipidir ve repoda bulunmuyor.
+      Stil rehberinin önerdiği ikame: Nunito Sans (alternatif: DM Sans).
+      Lisanslı Aquawax Pro dosyaları eklenirse src/styles/index.css içindeki
+      --font-aquawax-pro yığınının başına eklenmesi yeterli.
+    -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,400;0,6..12,500;0,6..12,600;0,6..12,700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>

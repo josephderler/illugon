@@ -1,0 +1,154 @@
+@import 'tailwindcss';
+
+/* ==========================================================================
+   Foodnoms stil referansı — tasarım token'ları
+   Sunlit fruit market on white porcelain: sıcak turuncu, taze yeşil,
+   cömert yuvarlak formlar. Tema: light. Sistem bilinçli olarak FLAT —
+   hiçbir yerde box-shadow yok.
+   ========================================================================== */
+
+/*
+  `static` ZORUNLU: Tailwind v4 varsayılan olarak yalnızca bir yardımcı sınıf
+  tarafından kullanılan @theme değişkenlerini çıktıya yazar. Bu sitede renkler
+  token adıyla çalışma zamanında seçilip inline `var(--color-*)` olarak
+  okunuyor (bkz. src/lib/palette.js), dolayısıyla statik tarama onları görmez
+  ve budanırlar. `static` budamayı kapatır, tüm token'lar :root'a yazılır.
+*/
+@theme static {
+  /* --- Renkler ------------------------------------------------------------ */
+  --color-ember-orange: #ff5406;
+  --color-verdant-green: #00b33f;
+  --color-signal-red-orange: #ff3400;
+  --color-sky-blue: #00a9dd;
+  --color-mist-blue: #72a2c5;
+  --color-sunset-orange: #ff6d00;
+  --color-amber: #945300;
+  --color-alert-red: #ff001e;
+  --color-plum: #bd4be5;
+  --color-iris: #5856de;
+  --color-electric-blue: #0099f9;
+  --color-graphite: #2f2f2f;
+  --color-charcoal: #000000;
+  --color-fog: #f5f5f5;
+  --color-paper-white: #ffffff;
+
+  /* --- Yazı tipleri ------------------------------------------------------- */
+  /* Aquawax Pro ticari bir yazı tipi; stil rehberinin ikamesi Nunito Sans. */
+  --font-aquawax-pro:
+    'Aquawax Pro', 'Nunito Sans', ui-sans-serif, system-ui, -apple-system,
+    BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-sans: var(--font-aquawax-pro);
+  /* 12px altı mikro UI metni için sistem yazı tipi (rehber kuralı). */
+  --font-micro: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+    'Segoe UI', Roboto, sans-serif;
+
+  /* --- Tip ölçeği (ara boy türetmeyin) ----------------------------------- */
+  --text-tiny: 12px;
+  --text-tiny--line-height: 1.2;
+  --text-caption: 14px;
+  --text-caption--line-height: 1.2;
+  --text-body-sm: 16px;
+  --text-body-sm--line-height: 1.4;
+  --text-body: 17px;
+  --text-body--line-height: 1.6;
+  --text-subheading: 20px;
+  --text-subheading--line-height: 1.8;
+  --text-heading-sm: 22px;
+  --text-heading-sm--line-height: 1.2;
+  --text-heading: 30px;
+  --text-heading--line-height: 1.2;
+  --text-display: 60px;
+  --text-display--line-height: 1.2;
+
+  /* --- Köşe yarıçapı ----------------------------------------------------- */
+  /* Sistemin imzası: buton / kart / tag / input hepsi 26px. */
+  --radius-3xl: 26px;
+  --radius-brand: 26px;
+
+  /* --- Layout ------------------------------------------------------------ */
+  --container-page: 1200px;
+}
+
+/*
+  Spacing notu: rehberin 8px tabanlı ölçeği Tailwind'in varsayılan skalasıyla
+  birebir örtüşüyor, bu yüzden --spacing-* anahtarlarını EZMİYORUZ (ezmek
+  p-8 gibi yerleşik yardımcıların anlamını bozar).
+    8px  -> 2      40px -> 10     64px -> 16
+    24px -> 6      48px -> 12     96px -> 24  (bölüm aralığı)
+    32px -> 8      56px -> 14
+*/
+:root {
+  --spacing-unit: 8px;
+  --section-gap: 96px;
+  --card-padding: 32px;
+  --element-gap: 20px;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    /* Aquawax Pro'nun OpenType özellikleri; ikame yazı tipinde sessizce yok sayılır. */
+    font-feature-settings: 'cv03', 'cv04', 'cv09', 'cv11', 'dlig', 'ss01',
+      'ss02', 'ss03';
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    background-color: var(--color-paper-white);
+    color: var(--color-graphite);
+    font-family: var(--font-aquawax-pro);
+    font-weight: 500;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Erişilebilirlik: sistem flat olduğu için odak halkasını outline ile
+     veriyoruz (box-shadow yasağını ihlal etmez). */
+  :focus-visible {
+    outline: 3px solid var(--color-ember-orange);
+    outline-offset: 3px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+@layer utilities {
+  /* Ekran okuyucuya açık, görsel olarak gizli. */
+  .sr-only-focusable:not(:focus):not(:focus-within) {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+  }
+
+  /* Sayfa geçiş animasyonu: fade-in (route transition). */
+  .animate-fade-in {
+    animation: page-fade-in 250ms ease-out forwards;
+  }
+}
+
+@keyframes page-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
