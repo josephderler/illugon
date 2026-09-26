@@ -4,11 +4,9 @@ import { colorVar } from '../../lib/palette';
 import BrandWordmark from '../ui/BrandWordmark';
 import PageLink from '../ui/PageLink';
 import FilledButton from '../ui/FilledButton';
-import LanguageSwitcher from '../ui/LanguageSwitcher';
 
 /**
- * İnce üst bar: solda logo, ortada ghost nav, sağda dil değiştirici ve dolu
- * Ember Orange buton. Sidebar veya mega-menü yok. Mobilde nav bir açılır
+ * İnce üst bar: solda logo, ortada ghost nav, sağda dolu Ember Orange buton. Sidebar veya mega-menü yok. Mobilde nav bir açılır
  * panele iner.
  */
 export default function Header() {
@@ -41,8 +39,6 @@ export default function Header() {
         </nav>
 
         <div className="flex items-center gap-3">
-          <LanguageSwitcher />
-
           {/*
             Görünürlük sarmalayıcıyla kontrol edilir, FilledButton'a `hidden`
             geçilerek DEĞİL: butonun taban sınıfı `inline-flex` ve Tailwind

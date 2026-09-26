@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { brand } from '../../lib/siteConfig';
-import { useLocale } from '../../i18n';
+import { useT } from '../../i18n';
 import { pathFor } from '../../lib/routes';
 import { colorVar } from '../../lib/palette';
 import { cn } from '../../lib/cn';
@@ -14,11 +14,11 @@ import { cn } from '../../lib/cn';
  * gösteriliyor; 2x ekranlarda 48px varyantı devreye girer.
  */
 export default function BrandWordmark({ className }) {
-  const { locale, t } = useLocale();
+  const t = useT();
 
   return (
     <Link
-      to={pathFor('home', locale)}
+      to={pathFor('home')}
       className={cn('inline-flex items-center gap-3 no-underline', className)}
       aria-label={t.common.homeAriaLabel}
     >

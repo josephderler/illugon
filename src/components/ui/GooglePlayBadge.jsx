@@ -1,5 +1,5 @@
-import { store, storeBadges } from '../../lib/siteConfig';
-import { useLocale } from '../../i18n';
+import { store, storeBadge as badge } from '../../lib/siteConfig';
+import { useT } from '../../i18n';
 import { cn } from '../../lib/cn';
 
 /**
@@ -9,14 +9,11 @@ import { cn } from '../../lib/cn';
  * yok, olmayan bir mağazaya yönlendirmiyoruz.
  *
  * Rozet Google'ın kendi asset'idir ve yalnızca ölçeklenir; kendi çizdiğimiz bir
- * rozet kullanmak marka kurallarına aykırı olurdu. Artwork dile göre değişir
- * (TR "İNDİRİN", EN "GET IT ON") ve iki sürümün içindeki clear space oranı da
- * farklı olduğu için gösterim ölçüleri siteConfig'ten okunur — böylece rozetin
- * görünür yüksekliği her iki dilde de 56px olur.
+ * rozet kullanmak marka kurallarına aykırı olurdu. Gösterim ölçüleri
+ * siteConfig'ten okunur — böylece rozetin görünür yüksekliği 56px olur.
  */
 export default function GooglePlayBadge({ className }) {
-  const { locale, t } = useLocale();
-  const badge = storeBadges[locale] ?? storeBadges.tr;
+  const t = useT();
 
   return (
     <a

@@ -1,10 +1,8 @@
 import { Link } from 'react-router-dom';
-import { useLocale } from '../../i18n';
 import { pathFor } from '../../lib/routes';
 
 /**
- * Dile duyarlı iç bağlantı. `page` verildiğinde yol aktif dile göre üretilir,
- * böylece İngilizce sayfadan verilen bağlantı İngilizce kalır.
+ * İç bağlantı. `page` verildiğinde yol sayfa kaydından üretilir.
  *
  * Üç bağlantı türü tek yerde toplanır:
  *  - `page`     : uygulama içi sayfa (router)
@@ -21,8 +19,6 @@ export default function PageLink({
   style,
   ...rest
 }) {
-  const { locale } = useLocale();
-
   if (external) {
     return (
       <a
@@ -43,7 +39,7 @@ export default function PageLink({
   if (hash) {
     return (
       <Link
-        to={{ pathname: pathFor('home', locale), hash: href }}
+        to={{ pathname: pathFor('home'), hash: href }}
         className={className}
         style={style}
         {...rest}
@@ -55,7 +51,7 @@ export default function PageLink({
 
   return (
     <Link
-      to={pathFor(page || 'home', locale)}
+      to={pathFor(page || 'home')}
       className={className}
       style={style}
       {...rest}

@@ -100,8 +100,8 @@ const BADGE_OUT = 'public/badges';
  * Her dil için ayrı artwork. Rozetin içindeki metin dile göre değiştiği gibi
  * ASSET İÇİNDEKİ ORANLAR DA değişiyor: Türkçe sürümde görünür rozet 646x192,
  * İngilizce sürümde 646x168. Bu yüzden 56px görünür yükseklik için gereken
- * gösterim ölçüsü de farklı — ölçüler src/lib/siteConfig.js `storeBadges`
- * içinde tutulur ve bileşen oradan okur.
+ * gösterim ölçüsü de farklı. Site yalnızca EN rozetini kullanır; ölçüleri
+ * src/lib/siteConfig.js `storeBadge` içinde tutulur.
  */
 const STORE_BADGES = [
   { name: 'google-play-tr', src: 'assets-src/badges/google-play-tr.png', widths: [376, 188] },
@@ -125,7 +125,7 @@ const OG_SIZE = { width: 1200, height: 630 };
 const OG_FONT_STACK = "'Segoe UI', 'Nunito Sans', 'DM Sans', Arial, sans-serif";
 
 /** OG kompozisyonunda gösterilecek ekran görüntüsü. */
-const OG_SCREEN = 'assets-src/screens/1.webp';
+const OG_SCREEN = 'assets-src/screens-en/1.png';
 
 /** Stil rehberi renkleri — src/styles/index.css ile aynı olmalı. */
 const COLOR = {
@@ -447,10 +447,10 @@ async function buildSocialImage(rows) {
   const textSvg = svgBuffer(
     `<svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}">
        <g font-family="${OG_FONT_STACK}">
-         <text x="156" y="137" font-size="44" font-weight="700" fill="${COLOR.graphite}">Illugon</text>
-         <text x="72" y="320" font-size="54" font-weight="700" fill="${COLOR.verdantGreen}">Oynayarak Öğrenin</text>
-         <text x="72" y="378" font-size="36" font-weight="600" fill="${COLOR.graphite}">şekil, renk ve sayılar</text>
-         <text x="72" y="452" font-size="24" font-weight="600" fill="${COLOR.mistBlue}">2-5 yaş · Reklamsız · Çevrimdışı</text>
+         <text x="156" y="137" font-size="44" font-weight="700" fill="${COLOR.graphite}">ILLOGAN</text>
+         <text x="72" y="320" font-size="54" font-weight="700" fill="${COLOR.verdantGreen}">Learn by Playing</text>
+         <text x="72" y="378" font-size="36" font-weight="600" fill="${COLOR.graphite}">shapes, colors and numbers</text>
+         <text x="72" y="452" font-size="24" font-weight="600" fill="${COLOR.mistBlue}">Ages 2-5 · Ad-free · Offline</text>
        </g>
      </svg>`,
   );

@@ -2,6 +2,14 @@
   "buildCommand": "npm run build",
   "outputDirectory": "dist",
   "framework": "vite",
+  "redirects": [
+    { "source": "/en", "destination": "/", "permanent": true },
+    { "source": "/en/:path*", "destination": "/:path*", "permanent": true },
+    { "source": "/gizlilik", "destination": "/privacy", "permanent": true },
+    { "source": "/kullanim-kosullari", "destination": "/terms", "permanent": true },
+    { "source": "/kvkk", "destination": "/data-protection", "permanent": true },
+    { "source": "/iletisim", "destination": "/contact", "permanent": true }
+  ],
   "rewrites": [
     { "source": "/(.*)", "destination": "/index.html" }
   ],

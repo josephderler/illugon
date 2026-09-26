@@ -7,7 +7,7 @@ import Reveal from '../ui/Reveal';
 import { cn } from '../../lib/cn';
 
 /**
- * FAQ / "Neden Illugon?" bölümü.
+ * FAQ / "Why ILLOGAN?" bölümü.
  *
  * Accordion tasarımı: soru satırına tıklanınca cevap açılır/kapanır.
  * Aynı anda yalnızca bir öğe açık olabilir (tek seçimli accordion).

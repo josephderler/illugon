@@ -1,7 +1,7 @@
-import { brand, contact, store } from '../../lib/siteConfig';
+import { brand, company, contact, store } from '../../lib/siteConfig';
 
 /**
- * English content — mirrors src/i18n/locales/tr.js key for key.
+ * Site content (the site is English-only).
  *
  * CONTENT RULE: every feature and safety claim comes from the Google Play
  * listing description or from the screenshots themselves. Do not add
@@ -16,10 +16,7 @@ import { brand, contact, store } from '../../lib/siteConfig';
 const address = contact.addressLines.join(', ');
 
 const en = {
-  code: 'en',
   htmlLang: 'en',
-  label: 'English',
-  shortLabel: 'EN',
   dir: 'ltr',
 
   nav: {
@@ -29,7 +26,7 @@ const en = {
     closeMenu: 'Close menu',
     items: [
       { label: 'Games', href: '#oyunlar' },
-      { label: 'FAQ', href: '#neden-illugon' },
+      { label: 'FAQ', href: '#why-illogan' },
       { label: 'Download', href: '#indir' },
     ],
     action: { label: 'Get the App', href: '#indir' },
@@ -38,8 +35,6 @@ const en = {
   common: {
     skipToContent: 'Skip to content',
     homeAriaLabel: `${brand.name} home`,
-    languageSwitcherLabel: 'Language',
-    switchToOther: 'Türkçe',
     backToHome: 'Back to home',
     storeBadgeLabel: 'Get it on Google Play',
     lastUpdated: 'Last updated',
@@ -122,11 +117,11 @@ const en = {
 
     video: {
       headline: { accent: 'How to Play?', rest: 'A quick look' },
-      subtext: 'Take a peek into Illugon\u2019s colorful world \u2014 a few scenes from the games.',
-      iframeTitle: 'Illugon promo video',
+      subtext: `Take a peek into ${brand.name}\u2019s colorful world \u2014 a few scenes from the games.`,
+      iframeTitle: `${brand.name} promo video`,
     },
     faq: {
-      sectionId: 'neden-illugon',
+      sectionId: 'why-illogan',
       headline: { accent: 'Why', rest: `${brand.name}?` },
       lead: 'Answers to the questions parents ask most.',
       items: [
@@ -189,7 +184,7 @@ const en = {
         title: 'Product',
         links: [
           { label: 'Games', href: '#oyunlar', hash: true },
-          { label: 'FAQ', href: '#neden-illugon', hash: true },
+          { label: 'FAQ', href: '#why-illogan', hash: true },
           { label: 'Download', href: 'https://play.google.com/store/apps/details?id=com.ilugon.shapes.colors.toddler.games', external: true },
         ],
       },
@@ -210,7 +205,7 @@ const en = {
         ],
       },
     ],
-    copyright: `© ${new Date().getFullYear()} ${brand.name}. All rights reserved.`,
+    copyright: `© ${new Date().getFullYear()} ${company.legalName}. All rights reserved.`,
   },
 
   contact: {
@@ -219,9 +214,15 @@ const en = {
     heading: { accent: 'Get in Touch', rest: 'and we will answer' },
     lead: 'Reach us through any of the channels below for questions, feedback or privacy requests about the app. We usually reply to emails within a business day.',
     cards: [
-      { label: 'Email', value: contact.email, href: contact.emailHref, color: 'ember-orange' },
-      { label: 'Phone', value: contact.phone, href: contact.phoneHref, color: 'verdant-green' },
-      { label: 'Address', value: contact.addressLines.join('\n'), color: 'sky-blue' },
+      { label: 'Email', icon: 'email', value: contact.email, href: contact.emailHref, color: 'ember-orange' },
+      { label: 'Alternative email', icon: 'email', value: contact.altEmail, href: contact.altEmailHref, color: 'iris' },
+      { label: 'Phone', icon: 'phone', value: contact.phone, href: contact.phoneHref, color: 'verdant-green' },
+      {
+        label: 'Address',
+        icon: 'address',
+        value: [company.legalName, ...contact.addressLines].join('\n'),
+        color: 'sky-blue',
+      },
     ],
     privacyNote:
       'For privacy or data protection requests, putting “Privacy” in the subject line speeds things up.',
@@ -251,9 +252,9 @@ const en = {
         {
           heading: 'Who is responsible and how to reach us',
           paragraphs: [
-            `${brand.name} is responsible for this policy.`,
+            `${company.legalName} (“${brand.name}”, “we”) is responsible for this policy.`,
             `Address: ${address}`,
-            `Email: ${contact.email} · Phone: ${contact.phone}`,
+            `Email: ${contact.email} or ${contact.altEmail} · Phone: ${contact.phone}`,
           ],
         },
         {
@@ -332,7 +333,7 @@ const en = {
         {
           heading: 'Scope',
           paragraphs: [
-            `These terms apply to the mobile app and the website offered by ${brand.name}.`,
+            `These terms apply to the ${brand.name} mobile app and website offered by ${company.legalName} (“we”).`,
             'If you do not accept them, please do not use the app and remove it from your device.',
           ],
         },
@@ -403,7 +404,7 @@ const en = {
           heading: 'Governing law and contact',
           paragraphs: [
             'These terms are governed by the laws of England and Wales. This does not affect rights you have under the consumer law of your country of residence.',
-            `Questions: ${contact.email} · ${address}`,
+            `Questions: ${contact.email} · ${company.legalName}, ${address}`,
           ],
         },
       ],
@@ -418,9 +419,9 @@ const en = {
         {
           heading: 'Identity of the controller',
           paragraphs: [
-            `${brand.name} is the data controller.`,
+            `${company.legalName} is the data controller.`,
             `Address: ${address}`,
-            `Email: ${contact.email} · Phone: ${contact.phone}`,
+            `Email: ${contact.email} or ${contact.altEmail} · Phone: ${contact.phone}`,
           ],
         },
         {

@@ -1,6 +1,6 @@
 import { useT } from '../../i18n';
 import { colorVar } from '../../lib/palette';
-import { contact } from '../../lib/siteConfig';
+import { company, contact } from '../../lib/siteConfig';
 import BrandWordmark from '../ui/BrandWordmark';
 import PageLink from '../ui/PageLink';
 
@@ -35,6 +35,13 @@ export default function Footer() {
                 {contact.email}
               </a>
               <a
+                href={contact.altEmailHref}
+                className="no-underline transition-opacity duration-150 hover:opacity-70"
+                style={{ color: colorVar('graphite') }}
+              >
+                {contact.altEmail}
+              </a>
+              <a
                 href={contact.phoneHref}
                 className="no-underline transition-opacity duration-150 hover:opacity-70"
                 style={{ color: colorVar('graphite') }}
@@ -42,6 +49,8 @@ export default function Footer() {
                 {contact.phone}
               </a>
               <span style={{ color: colorVar('mist-blue') }}>
+                {company.legalName}
+                <br />
                 {contact.addressLines.join(', ')}
               </span>
             </address>

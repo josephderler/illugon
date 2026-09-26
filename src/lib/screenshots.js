@@ -6,8 +6,8 @@
  *   TR -> public/screens/<id>-{480,800,1120}.webp
  *   EN -> public/screens-en/<id>-{480,526}.webp
  *
- * Metinler (caption ve alt) dile bağlı olduğu için burada DEĞİL,
- * src/i18n/locales/{tr,en}.js içindeki `screenshots` sözlüğündedir.
+ * Site yalnızca EN setini kullanır. Metinler (caption ve alt) burada DEĞİL,
+ * src/i18n/locales/en.js içindeki `screenshots` sözlüğündedir.
  */
 
 /** Görsellerin en-boy oranı: 2208x1242 ≈ 526x296 ≈ 16:9. */
@@ -20,32 +20,23 @@ export const SCREEN_IDS = ['1', '2', '3', '4', '5'];
 export const heroOrder = ['2', '1', '5'];
 
 /**
- * Dile göre ekran konfigürasyonu.
+ * Ekran konfigürasyonu (İngilizce set).
  *
  * `widths`: üretilen varyant genişlikleri (optimize-assets.mjs ile eşleşmeli).
  * `base`:   public/ altındaki klasör adı.
  * `intrinsic`: en büyük varyantın gerçek piksel boyutu (CLS önleme).
  */
-const config = {
-  tr: {
-    base: '/screens',
-    widths: [480, 800, 1120],
-    intrinsic: { width: 1120, height: 630 },
-  },
-  en: {
-    base: '/screens-en',
-    widths: [480, 526],
-    intrinsic: { width: 526, height: 296 },
-  },
+const cfg = {
+  base: '/screens-en',
+  widths: [480, 526],
+  intrinsic: { width: 526, height: 296 },
 };
 
 /**
  * @param {string} id   Ekran kimliği ('1'..'5')
- * @param {string} locale 'tr' | 'en'
  * @returns {{ srcSet: string, src: string, width: number, height: number }}
  */
-export function screenshotSources(id, locale) {
-  const cfg = config[locale] || config.tr;
+export function screenshotSources(id) {
   const srcSet = cfg.widths
     .map((w) => `${cfg.base}/${id}-${w}.webp ${w}w`)
     .join(', ');

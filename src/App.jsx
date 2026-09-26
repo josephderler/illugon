@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { Routes, Route, useLocation } from 'react-router-dom';
 import { LocaleProvider, useT } from './i18n';
-import { LOCALES, PAGE_KEYS, pathFor } from './lib/routes';
+import { PAGE_KEYS, pathFor } from './lib/routes';
 import { colorVar } from './lib/palette';
 import Header from './components/layout/Header';
 import Footer from './components/layout/Footer';
@@ -54,18 +54,10 @@ function Shell() {
       <main id="icerik">
         <PageTransition>
           <Routes>
-            {LOCALES.flatMap((locale) =>
-              PAGE_KEYS.map((key) => {
-                const Component = PAGE_COMPONENTS[key];
-                return (
-                  <Route
-                    key={`${locale}:${key}`}
-                    path={pathFor(key, locale)}
-                    element={<Component />}
-                  />
-                );
-              }),
-            )}
+            {PAGE_KEYS.map((key) => {
+              const Component = PAGE_COMPONENTS[key];
+              return <Route key={key} path={pathFor(key)} element={<Component />} />;
+            })}
             <Route path="*" element={<NotFoundPage />} />
           </Routes>
         </PageTransition>

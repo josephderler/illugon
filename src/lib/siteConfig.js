@@ -1,13 +1,16 @@
 /**
- * DİLDEN BAĞIMSIZ yapı ve doğrulanmış bilgiler.
- *
- * Buraya yalnızca her iki dilde de aynı kalan şeyler girer: marka, mağaza,
- * iletişim bilgileri, bölüm kimlikleri, renk ve görsel eşlemeleri.
- * Tüm METİN src/i18n/locales/{tr,en}.js içindedir.
+ * METİN DIŞI yapı ve doğrulanmış bilgiler: marka, şirket, mağaza, iletişim
+ * bilgileri, bölüm kimlikleri, renk ve görsel eşlemeleri.
+ * Tüm METİN src/i18n/locales/en.js içindedir.
  */
 
 export const brand = {
-  name: 'Illugon',
+  name: 'ILLOGAN',
+};
+
+/** Hukuki sayfalarda veri sorumlusu olarak geçen tüzel kişi. */
+export const company = {
+  legalName: 'ILLOGAN ENTERPRISES LTD',
 };
 
 /** Yayın adresi — canonical, hreflang ve og:url burada üretilir. */
@@ -23,37 +26,35 @@ export const store = {
   platform: 'Google Play',
   packageId: 'com.ilugon.shapes.colors.toddler.games',
   url: 'https://play.google.com/store/apps/details?id=com.ilugon.shapes.colors.toddler.games',
-  /** Play listelemesindeki uygulama adı. */
-  listingTitle: 'Eğitici Oyun: Şekiller Renkler',
 };
 
 /**
  * İletişim bilgileri — hukuki sayfalarda veri sorumlusu bilgisi olarak da
  * kullanılır, bu yüzden tek kaynak burasıdır.
- *
- * ⚠️ Adres kullanıcının verdiği biçimde birebir duruyor. "London, Manchester"
- * satırı tutarsız görünüyor (M16 8WP posta kodu Manchester'a ait); teyit
- * edildikten sonra `addressLines` düzeltilmeli.
  */
 export const contact = {
-  addressLines: ['280 Wilbraham Rd', 'Manchester M16 8WP', 'GB'],
-  phone: '+447564890036',
-  phoneHref: 'tel:+447564890036',
-  email: 'contact@illugon.com',
-  emailHref: 'mailto:contact@illugon.com',
+  addressLines: ['186 Evering Road', 'London, England', 'E5 8AJ'],
+  phone: '+447428845167',
+  phoneHref: 'tel:+447428845167',
+  email: 'info@illogan.co.uk',
+  emailHref: 'mailto:info@illogan.co.uk',
+  altEmail: 'eloifernandezbru@outlook.com',
+  altEmailHref: 'mailto:eloifernandezbru@outlook.com',
 };
 
 /**
- * Resmi Google Play rozetinin dile göre gösterim ölçüleri.
+ * Resmi Google Play rozetinin gösterim ölçüleri.
  *
  * Rozet Google'ın kendi asset'i; yalnızca ölçeklenir. Asset'in içindeki şeffaf
- * clear space oranı dile göre farklı (TR'de görünür rozet 646x192, EN'de
- * 646x168), bu yüzden rozetin GÖRÜNÜR yüksekliğinin her iki dilde de 56px
- * olması için gösterim ölçüleri ayrı hesaplanmıştır.
+ * clear space nedeniyle (görünür rozet 646x168) ölçüler, rozetin GÖRÜNÜR
+ * yüksekliği 56px olacak şekilde hesaplanmıştır.
  */
-export const storeBadges = {
-  tr: { name: 'google-play-tr', width: 188, height: 73, small: 188, large: 376 },
-  en: { name: 'google-play-en', width: 215, height: 83, small: 215, large: 430 },
+export const storeBadge = {
+  name: 'google-play-en',
+  width: 215,
+  height: 83,
+  small: 215,
+  large: 430,
 };
 
 /** Hukuki metinlerin son güncellenme tarihi (ISO). */

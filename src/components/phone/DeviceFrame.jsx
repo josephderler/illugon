@@ -1,5 +1,5 @@
 import { screenshotSources, SCREEN_IDS, ASPECT } from '../../lib/screenshots';
-import { useLocale } from '../../i18n';
+import { useT } from '../../i18n';
 import { colorVar } from '../../lib/palette';
 import { cn } from '../../lib/cn';
 
@@ -7,8 +7,7 @@ import { cn } from '../../lib/cn';
  * Yatay telefon çerçevesi — sitenin görsel kahramanı.
  *
  * Uygulama landscape çalışıyor ve mağaza görüntüleri 16:9, bu yüzden çerçeve
- * de yatay. Dile göre doğru ekran seti otomatik seçilir: TR yüksek çözünürlük,
- * EN 526px kaynak.
+ * de yatay. İngilizce ekran seti (526px kaynak) kullanılır.
  *
  * Genişlik AKIŞKAN: bileşen daima kapsayıcısını doldurur. Bezel kalınlığı yüzde
  * olarak verildiği için küçük ekranda kendiliğinden incelir ve taşma oluşmaz.
@@ -21,11 +20,11 @@ export default function DeviceFrame({
   className,
   style,
 }) {
-  const { locale, t } = useLocale();
+  const t = useT();
   if (!SCREEN_IDS.includes(screen)) return null;
 
   const shot = t.screenshots[screen];
-  const { srcSet, src, width, height } = screenshotSources(screen, locale);
+  const { srcSet, src, width, height } = screenshotSources(screen);
 
   return (
     <figure className={cn('m-0 w-full min-w-0 transition-transform duration-300 ease-out hover:scale-[1.02]', className)} style={style}>
